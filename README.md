@@ -69,4 +69,13 @@ make
 ```sh
 ./hello
 # Hello RDKit on C++ !!
+# Usage: ./hello SMILES
+
+./hello c1ccccc1
+# Input SMILES: c1ccccc1
+# Input SMILES Successfully parsed!!
+# Molecule Information:
+#         # of atoms: 6
+#         # of bonds: 6
+#         # of SSSR rings: 1
 ```
