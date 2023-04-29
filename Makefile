@@ -13,5 +13,3 @@ $(TARGET):
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR) $(TARGET)
-
-# && cmake -DRDKit_DIR=$(RDKITLIB) -DRDKit_INCLUDE_DIR=$(RDKITINC) ..\
