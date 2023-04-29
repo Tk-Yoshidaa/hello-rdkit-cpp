@@ -26,41 +26,46 @@ sudo apt install libeigen3-dev
 ```
 
 RDKitを以下でビルドする．
-```sh
-mkdir rdkit/build && cd rdkit/build
-```
+なお，ここではCMakeのオプション`CMAKE_INSTALL_PREFIX`を`$HOME/.local/share/rdkit`として，ビルド先を指定している．
 
-設定オプションを指定する．ここでは`$HOME/.local/share/rdkit`にビルドするように設定している．
 ```sh
+mkdir rdkit/build
+cd rdkit/build
 cmake -DCMAKE_BUILD_TYPE=Release\
     -DRDK_BUILD_PYTHON_WRAPPERS=OFF\
     -DRDK_INSTALL_INTREE=OFF\
     -DCMAKE_INSTALL_PREFIX=$HOME/.local/share/rdkit ..
-```
-
-
-インストール.
-```sh
 make && make install
 ```
 
-以下をrcファイルに追加してパスを設定する．
+最後に，以下をrcファイルに追加してパスを設定する．ここでのパスは`CMAKE_INSTALL_PREFIX`に指定したものと同じものを設定する必要がある．
 ```
 export $HOME/.local/share/rdkit:$LD_LIBRARY_PATH
+```
+
+追記したら，変更を反映する．
+```
+source ~/.bashrc
 ```
 
 
 ## プログラムのビルド
 
-`hello.cpp`のあるディレクトリにて以下の方法でビルド
+`hello.cpp`のあるディレクトリにて以下の方法でビルドする．
+
 ```sh
 mkdir build
 cd build
-cmake -DRDKit_DIR=./rdkit/lib/cmake/rdkit -DRKit_INCLUDE_DIR=./rdkit/Code ..
+cmake -DCMAKE_PREFIX_PATH=$HOME/.local/share/rdkit ..
 make
 ```
+ただし上記コマンドは[Makefile](./Makefile)にまとめているため，`hello.cpp`のあるディレクトリにて単に，
+```sh
+make
+```
+とするだけでもビルドできる．
 
-挙動を確認する．
+`build`ディレクトリ内（[Makefilee](./Makefile)を用いてビルドした場合は，`hello.cpp`のあるディレクトリ）に生成される`hello`を実行する．
 ```sh
 ./hello
 # Hello RDKit on C++ !!
