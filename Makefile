@@ -1,6 +1,5 @@
 RDKITPATH	:= $(HOME)/.local/share/rdkit
 
-
 .PHONY: hello
 hello:
 	mkdir -p build
@@ -8,7 +7,6 @@ hello:
 		&& cmake -DCMAKE_PREFIX_PATH=$(RDKITPATH) ..\
 		&& make
 	mv build/hello hello
-
 
 .PHONY: clean
 clean:
