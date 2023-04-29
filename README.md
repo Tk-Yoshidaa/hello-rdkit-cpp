@@ -41,7 +41,7 @@ make && make install
 
 最後に，以下をrcファイルに追加してパスを設定する．ここでのパスは`CMAKE_INSTALL_PREFIX`に指定したものと同じものを設定する必要がある．
 ```
-export $HOME/.local/share/rdkit:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/.local/share/rdkit:$LD_LIBRARY_PATH
 ```
 
 追記したら，変更を反映する．
