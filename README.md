@@ -65,7 +65,7 @@ make
 ```
 とするだけでもビルドできる．
 
-`build`ディレクトリ内（[Makefilee](./Makefile)を用いてビルドした場合は，`hello.cpp`のあるディレクトリ）に生成される`hello`を実行する．
+`build`ディレクトリ内（[Makefile](./Makefile)を用いてビルドした場合は，`hello.cpp`のあるディレクトリ内）に生成される`hello`を実行する．
 ```sh
 ./hello
 # Hello RDKit on C++ !!
