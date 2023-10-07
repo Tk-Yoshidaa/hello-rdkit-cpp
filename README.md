@@ -58,7 +58,7 @@ cmake -DCMAKE_BUILD_TYPE=Release\
     -DRDK_BUILD_PYTHON_WRAPPERS=OFF\
     -DRDK_INSTALL_INTREE=OFF\
     -DFREETYPE_LIBRARY=$HOME/.local/share/freetype/lib\
-    -DFREETYPE_INCLUDE_DIRS=$HOME/.local/share/freetype/include\
+    -DFREETYPE_INCLUDE_DIRS=$HOME/.local/share/freetype/include/freetype2\
     -DCMAKE_INSTALL_PREFIX=$HOME/.local/share/rdkit ..
 make && make install
 ```
