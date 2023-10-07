@@ -26,15 +26,39 @@ sudo apt install libfreetype-dev
 sudo apt install libeigen3-dev
 ```
 
+If you do not have sudo, you can download `freetype` [here](https://freetype.org/download.html).
+To build `freetype`, 
+```sh
+wget https://download.savannah.gnu.org/releases/freetype/freetype-2.10.0.tar.gz
+tar -xvzf freetype-2.10.0.tar.gz
+cd freetype-2.10.0
+./configure --prefix=$HOME/.local/share/freetype
+make && make install
+```
+
 RDKitを以下でビルドする．
 なお，ここではCMakeのオプション`CMAKE_INSTALL_PREFIX`を`$HOME/.local/share/rdkit`として，ビルド先を指定している．
 
 ```sh
 mkdir rdkit/build
 cd rdkit/build
+```
+
+```sh
 cmake -DCMAKE_BUILD_TYPE=Release\
     -DRDK_BUILD_PYTHON_WRAPPERS=OFF\
     -DRDK_INSTALL_INTREE=OFF\
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local/share/rdkit ..
+make && make install
+```
+
+If you have installed `freetype` manually, run following commands instead:
+```sh
+cmake -DCMAKE_BUILD_TYPE=Release\
+    -DRDK_BUILD_PYTHON_WRAPPERS=OFF\
+    -DRDK_INSTALL_INTREE=OFF\
+    -DFREETYPE_LIBRARY=$HOME/.local/share/freetype/lib\
+    -DFREETYPE_INCLUDE_DIRS=$HOME/.local/share/freetype/include\
     -DCMAKE_INSTALL_PREFIX=$HOME/.local/share/rdkit ..
 make && make install
 ```
